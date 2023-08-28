@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.navTitle
+{
+  text-align: center;
+  margin-right: 210px;
+  font-family: 'Indie Flower', cursive;
+}

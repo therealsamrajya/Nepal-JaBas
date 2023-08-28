@@ -1,0 +1,60 @@
+
+* {
+  box-sizing: border-box;
+  
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+.carousel-caption {
+  position: absolute;
+  top: 40%; /* Adjust this value to move the caption upwards */
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+  text-align: center;
+  
+}
+.carousel-inner {
+  max-width: 800px; /* Adjust this value as needed */
+  margin: 0 auto; /* Center the carousel horizontally */
+}
+.carousel {
+  margin: 0 auto; /* Center the carousel horizontally */
+}
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust this value if needed */
+}
+.carousel-inner img {
+  height: 500px; /* Adjust this value as needed */
+ 
+  object-fit: contain; /* Maintain aspect ratio and cover the entire slide */
+}
+.navTitle
+{
+  text-align: center;
+  margin-right: 210px;
+ 
+  font-family: 'Indie Flower', cursive;
+}
+
+
+@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
