@@ -15,6 +15,62 @@
         #map {
             height: 400px;
         }
+        .travel-options {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.travel-options h2 {
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.travel-options p {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.option {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.option h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.option p {
+    font-size: 16px;
+    color: #777;
+}
+
+/* Style the links in the travel options if needed */
+.option a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.option a:hover {
+    color: #0056b3;
+}
+/* Style for small icons */
+.icon{
+    width: 250px; /* Adjust the width to your desired size */
+    height: 150px; /* Adjust the height to your desired size */
+}
+
     </style>
 </head>
 <body style="font-family: georgia;">
@@ -60,6 +116,79 @@
 <div id="map"></div>
 <input type="text" id="destinationInput" placeholder="Enter your destination">
 <button onclick="calculateRoute()" id="calculateButton">Calculate Route</button>
+<!-- Add this enhanced content inside the "Travel Options" section -->
+<div class="travel-options">
+  <h2>Travel Options</h2>
+  <p>Discover different ways to reach your destination!</p>
+
+  <div class="option">
+      <h3>By Air</h3>
+      <p>Traveling by air is a convenient and fast way to reach your destination. Check out the nearest airports and flight options.</p>
+      <!-- Add air travel details for Pokhara, Chitwan, and Mustang -->
+      <ul>
+          <li>
+              <img src="pokhara-airport.jpg" alt="Pokhara Airport" class="icon">
+              <h4>Pokhara:</h4>
+              <ul>
+                  <li>Nearest Airport: Pokhara Airport</li>
+                  <li>Direct Flights: Available from Tribhuvan International Airport (KTM)</li>
+              </ul>
+          </li>
+          <li>
+              <img src="chitwan-airport.jpg" alt="Bharatpur Airport" class="icon">
+              <h4>Chitwan:</h4>
+              <ul>
+                  <li>Nearest Airport: Bharatpur Airport</li>
+                  <li>Direct Flights: Available from Tribhuvan International Airport (KTM)</li>
+              </ul>
+          </li>
+          <li>
+              <img src="mustang-airport.jpg" alt="Jomsom Airport" class="icon">
+              <h4>Mustang:</h4>
+              <ul>
+                  <li>Nearest Airport: Jomsom Airport</li>
+                  <li>Direct Flights: Available from Tribhuvan International Airport (KTM)</li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+
+  <div class="option">
+      <h3>By Road</h3>
+      <p>Exploring the roadways can be an exciting adventure. Find information on bus services, highways, and scenic routes.</p>
+      <!-- Add road travel details for Pokhara, Chitwan, and Mustang -->
+      <ul>
+          <li>
+              <img src="pokhara-road.jpg" alt="Road to Pokhara" class="icon">
+              <h4>Pokhara:</h4>
+              <ul>
+                  <li>Highway: Prithvi Highway (Kathmandu to Pokhara)</li>
+                  <li>Distance from Kathmandu: Approximately 200 km</li>
+                  <li>Bus Services: Regular bus services available</li>
+              </ul>
+          </li>
+          <li>
+              <img src="chitwan-road.jpg" alt="Road to Chitwan" class="icon">
+              <h4>Chitwan:</h4>
+              <ul>
+                  <li>Highway: Narayangadh-Muglin Road (Kathmandu to Chitwan)</li>
+                  <li>Distance from Kathmandu: Approximately 150 km</li>
+                  <li>Bus Services: Regular bus services available</li>
+              </ul>
+          </li>
+          <li>
+              <img src="mustang-trek.jpg" alt="Mustang Trekking" class="icon">
+              <h4>Mustang:</h4>
+              <ul>
+                  <li>Scenic Route: Annapurna Circuit Trek (for adventurous travelers)</li>
+                  <li>Distance from Kathmandu: Varies depending on the trekking route</li>
+                  <li>Trekking Guide: Recommended for Mustang trek</li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+</div>
+
 
 <script>
     var map = L.map('map').setView([28.3949, 84.1240], 7); // Centered around Nepal
