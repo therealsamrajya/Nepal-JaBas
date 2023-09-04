@@ -1,63 +1,194 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel ="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <!-- Leaflet Routing Machine CSS and JavaScript -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+    
+    <style>
+        #map {
+            height: 400px;
+        }
+    </style>
 </head>
-<body style="font-family:georgia;">
+<body style="font-family: georgia;">
 
 <div class="div-container">
-  <div class="divContent">
-  <h1>Welcome to Nepal !</h1>
-  <h3 class="h2Div">The 8th wonder of the world</h3>
-</div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="index.html">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="index history.html">History <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="indexx transport.html">Transport<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Articles
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="index mustang.html">Mustang</a>
-          <a class="dropdown-item" href="index pokhara.html">Pokhara</a>
-          <a class="dropdown-item" href="index chitwan.html">Chitwan</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index history.html">History <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="indexx transport.html">Transport<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Articles
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="index mustang.html">Mustang</a>
+                        <a class="dropdown-item" href="index pokhara.html">Pokhara</a>
+                        <a class="dropdown-item" href="index chitwan.html">Chitwan</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-    
-    
-  
-    </div>
-     
-    
-  <p>Transport</p>
+    </nav>
+</div>
+
+<div id="map"></div>
+<input type="text" id="destinationInput" placeholder="Enter your destination">
+<button onclick="calculateRoute()" id="calculateButton">Calculate Route</button>
+
+<script>
+    var map = L.map('map').setView([28.3949, 84.1240], 7); // Centered around Nepal
+    var routingControl;
+    var userLocationMarker;
+    var destinationMarker;
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Initialize the map with the user's current location
+    function initializeMapWithUserLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var userLatLng = L.latLng(position.coords.latitude, position.coords.longitude);
+                map.setView(userLatLng, 13);
+
+                // Add a marker at the user's current location
+                userLocationMarker = L.marker(userLatLng).addTo(map);
+            }, function(error) {
+                console.error('Error getting user location:', error);
+            });
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+        }
+    }
+
+    // Initialize the map with the user's location
+    initializeMapWithUserLocation();
+
+    // Function to calculate and update the route
+    function calculateRoute() {
+        var destination = document.getElementById('destinationInput').value;
+
+        if (!destination) {
+            alert('Please enter a destination.');
+            return;
+        }
+
+        // Use a geocoding service to convert the user's input into coordinates
+        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${destination}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.length > 0) {
+                    var destinationCoordinates = L.latLng(data[0].lat, data[0].lon);
+
+                    if (routingControl) {
+                        map.removeControl(routingControl);
+                    }
+
+                    // Calculate the distance between user and destination
+                    var distance = userLocationMarker.getLatLng().distanceTo(destinationCoordinates);
+
+                    // Adjust the map's zoom level based on the distance
+                    if (distance > 500) {
+                        map.setView(userLocationMarker.getLatLng(), 10); // Zoom out
+                    } else {
+                        map.setView(userLocationMarker.getLatLng(), 13); // Normal zoom
+                    }
+
+                    // Remove the previous destination marker, if any
+                    if (destinationMarker) {
+                        map.removeLayer(destinationMarker);
+                    }
+
+                    // Create a marker for the destination
+                    destinationMarker = L.marker(destinationCoordinates).addTo(map);
+
+                    // Create a popup with a button
+                    var popupContent = `
+                        <div>
+                            <p>Welcome to ${destination}. Let's visit there.</p>
+                            <button id="visitButton">Let's go</button>
+                        </div>
+                    `;
+
+                    var popup = L.popup()
+                        .setLatLng(destinationCoordinates)
+                        .setContent(popupContent)
+                        .openOn(map);
+
+                    // Add a click event listener to the popup button
+                    document.getElementById('visitButton').addEventListener('click', function() {
+                        // Redirect to the respective destination webpage
+                        redirectToDestinationPage(destination.toLowerCase());
+                    });
+
+                    routingControl = L.Routing.control({
+                        waypoints: [userLocationMarker.getLatLng(), destinationCoordinates],
+                        routeWhileDragging: true
+                    }).addTo(map);
+                } else {
+                    alert('Destination not found. Please enter a valid destination.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Function to redirect to the respective destination webpage
+    function redirectToDestinationPage(destination) {
+        switch (destination) {
+            case 'mustang':
+                window.location.href = 'index mustang.html';
+                break;
+            case 'chitwan':
+                window.location.href = 'index chitwan.html';
+                break;
+            case 'pokhara':
+                window.location.href = 'index pokhara.html';
+                break;
+            // Add more cases for other destinations and webpages as needed
+            default:
+                alert('Destination webpage not found.');
+        }
+    }
+
+    // Adjust button behavior for smaller screens
+    var calculateButton = document.getElementById('calculateButton');
+    if (window.innerWidth <= 768) {
+        calculateButton.addEventListener('click', function() {
+            calculateRoute();
+        });
+    }
+</script>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-
-
 </body>
 </html>
