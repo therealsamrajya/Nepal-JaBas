@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/stylessh.css" />
+    <!-- Your custom stylesheet (if any) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
+      rel="stylesheet"
+    />
+    <title>About Us</title>
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+      .user-card {
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        max-width: 300px;
+      }
+
+      .user-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+
+      .user-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .user-role {
+        font-style: italic;
+        margin-bottom: 10px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 10px;
+      }
+
+      .social-link {
+        text-decoration: none;
+        color: #007bff;
+        font-size: 1.5rem;
+      }
+      .page-description {
+        margin-left: 30px; /* Add some space to the right of the user cards */
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 30px 0;
+        width: 100%;
+        height: fit-content;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-section {
+        flex-basis: calc(33.33% - 20px);
+        margin-bottom: 20px;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 10px;
+      }
+
+      .footer-form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer-form input,
+      .footer-form textarea {
+        margin-bottom: 10px;
+        padding: 5px;
+      }
+
+      .footer-social {
+        display: flex;
+      }
+
+      .footer-social a {
+        display: inline-block;
+        margin-right: 10px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">Home</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index history.html"
+              >History <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="indexx transport.html"
+              >Transport<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Articles
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="index mustang.html">Mustang</a>
+              <a class="dropdown-item" href="index pokhara.html">Pokhara</a>
+              <a class="dropdown-item" href="index chitwan.html">Chitwan</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <div>
+          <h1 class="navTitle">NEPAL JABAS</h1>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="user-card">
+        <img class="user-image" src="user1.jpg" alt="User 1" />
+        <div class="user-name">User 1</div>
+        <div class="user-role">Web Developer</div>
+        <div class="social-links">
+          <a
+            class="social-link"
+            href="https://www.linkedin.com/user1"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a
+            class="social-link"
+            href="https://twitter.com/user1"
+            target="_blank"
+            >Twitter</a
+          >
+        </div>
+      </div>
+
+      <div class="user-card">
+        <img class="user-image" src="user2.jpg" alt="User 2" />
+        <div class="user-name">User 2</div>
+        <div class="user-role">Graphic Designer</div>
+        <div class="social-links">
+          <a
+            class="social-link"
+            href="https://www.linkedin.com/user2"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a
+            class="social-link"
+            href="https://instagram.com/user2"
+            target="_blank"
+            >Instagram</a
+          >
+        </div>
+      </div>
+
+      <div class="user-card">
+        <img class="user-image" src="user3.jpg" alt="User 3" />
+        <div class="user-name">User 3</div>
+        <div class="user-role">Content Writer</div>
+        <div class="social-links">
+          <a
+            class="social-link"
+            href="https://www.linkedin.com/user3"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a
+            class="social-link"
+            href="https://facebook.com/user3"
+            target="_blank"
+            >Facebook</a
+          >
+        </div>
+      </div>
+      <div class="page-description">
+        <h2>Our Mission</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam
+          velit, vulputate eu pharetra nec, mattis ac neque. Sed aliquet risus a
+          tortor.
+        </p>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div class="footer-form">
+            <input type="text" placeholder="Your Name" />
+            <input type="email" placeholder="Your Email" />
+            <textarea placeholder="Your Message"></textarea>
+            <button>Send</button>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="footer-social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            fringilla malesuada erat vel bibendum.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
