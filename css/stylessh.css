@@ -113,6 +113,51 @@ body{
   margin-right: 10px;
   color: white;
 }
+@media (max-width: 768px) {
+  .testimonials-container {
+    display: block; /* Change to block-level display */
+    padding: 20px;
+  }
+
+  .testimonial {
+    width: 100%; /* Make testimonials full width */
+    height: auto; /* Allow the height to adjust based on content */
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  .testimonial img {
+    max-width: 100px; /* Adjust the max-width as needed */
+    height: auto; /* Allow the height to adjust based on content */
+    display: block;
+    margin: 0 auto; /* Center the images horizontally */
+  }
+  .carousel-caption {
+    font-size: 14px; /* Adjust the font size as needed */
+    padding: 10px; /* Adjust padding to fit content within the available space */
+  }
+
+  .carousel-caption .btn {
+    margin-top: 10px; /* Add some top margin to separate the button from text */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

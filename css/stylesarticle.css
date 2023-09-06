@@ -13,7 +13,7 @@ body{
   font-family: 'Indie Flower', cursive;
 }
 .background-image {
-  background-image: url('/mustang/MON1.jpg');
+  background-image: url('../mustang/MON1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;
