@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "C:/Users/DELL.DESKTOP-C17F0G2/Desktop/samrajya_html/webdev/Nepal JaBas/index",
+      "use": "@vercel/static"
+    }
+  ]
+}
