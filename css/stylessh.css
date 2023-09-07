@@ -12,6 +12,7 @@ body{
   margin-right: 210px;
   font-family: 'Indie Flower', cursive;
 }
+
 .carousel-caption {
   position: absolute;
   top: 50%; /* Adjust this value to move the caption upwards */
